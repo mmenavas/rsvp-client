@@ -13,9 +13,9 @@ class App extends Component {
       searched: false,
       found: false,
       showThankYou: false,
-      lastName: '',
+      code: '',
       zipCode: '',
-      rsvp: false,
+      rsvp: '',
       guest: {},
     }
   }
@@ -23,9 +23,9 @@ class App extends Component {
   componentDidMount() {
   }
 
-  handleLastName = (lastName) => {
+  handleCode = (code) => {
     this.setState({
-      lastName: lastName,
+      code: code,
       searched: false,
       found: false
     });
@@ -35,19 +35,18 @@ class App extends Component {
     e.preventDefault();
 
     // Abort if no name is supplied
-    if (!this.state.lastName) {
+    if (!this.state.code) {
       return false;
     }
 
     let _this = this;
     firebase.database().ref('guests')
-      .orderByChild('name')
-      .equalTo(this.state.lastName)
+      .orderByChild('code')
+      .equalTo(this.state.code)
       .limitToFirst(1).once('value', data => {
         data.forEach(item => {
           let guest = item.val();
           if (guest) {
-            console.log("Success");
             _this.setState({
               guest: {
                 ...guest,
@@ -63,9 +62,9 @@ class App extends Component {
       });
   }
 
-  handleGuestRsvp = (checked) => {
+  handleGuestRsvp = (rsvp) => {
     this.setState({
-      rsvp: checked
+      rsvp: rsvp
     });
   }
 
@@ -77,17 +76,19 @@ class App extends Component {
       return false;
     }
 
+    console.log(this.state.guest);
+
     // Update guest on firebase.
     firebase.database().ref(`/guests/${this.state.guest.id}`).set({
       ...this.state.guest,
-      isConfirmed: this.state.rsvp
+      rsvp: this.state.rsvp
     });
 
     this.setState({
       guest:{},
       searched: false,
       found: false,
-      rsvp: false,
+      rsvp: '',
       showThankYou: true
     });
 
@@ -99,9 +100,9 @@ class App extends Component {
       <div className="app">
         <Tile>
           <SearchGuest
-            lastName={this.state.lastName}
+            code={this.state.code}
             showNotFoundMessage={this.state.searched && !this.state.found}
-            handleLastName={e => this.handleLastName(e.target.value)}
+            handleCode={e => this.handleCode(e.target.value)}
             handleGuestSearch={e => this.handleGuestSearch(e)}
           />
         </Tile>
@@ -112,7 +113,7 @@ class App extends Component {
         {this.state.found ?
           <Guest
             guest={this.state.guest}
-            handleGuestRsvp={checked => this.handleGuestRsvp(checked)}
+            handleGuestRsvp={e => this.handleGuestRsvp(e.target.value)}
             handleUpdateGuest={e => this.handleUpdateGuest(e)}
           />
         : ''

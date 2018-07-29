@@ -12,13 +12,16 @@ const SearchGuest = props => (
         <div className="bx--row">
           <div className="bx--col-xs-9 ">
             <Search
-              id="search-guest-name"
+              id="search-guest-code"
               labelText="Search"
-              onChange={props.handleLastName}
-              value={props.lastName}
-              placeholder="Enter guest name"
-              className="search-guest__name"
+              onChange={props.handleCode}
+              value={props.code}
+              placeHolderText="e.g. mena85295"
+              className="search-guest__code"
             />
+            <div>
+              Please enter your last name followed by your zip code, with no space in between.
+            </div>
           </div>
           <div className="bx--col-xs-3">
             <Button type="submit" className="search-guest__submit">
@@ -41,9 +44,9 @@ const SearchGuest = props => (
 );
 
 SearchGuest.propTypes = {
-  lastName: PropTypes.string.isRequired,
-  showNotFoundMessage: PropTypes.string.isRequired,
-  handleLastName: PropTypes.func.isRequired,
+  code: PropTypes.string.isRequired,
+  showNotFoundMessage: PropTypes.bool.isRequired,
+  handleCode: PropTypes.func.isRequired,
   handleGuestSearch: PropTypes.func.isRequired,
 }
 
