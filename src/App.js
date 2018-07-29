@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Tile } from 'carbon-components-react';
 import firebase from './firebase.js';
 import Guest from './Components/Guest';
 import './App.css';
@@ -24,6 +23,7 @@ class App extends Component {
   }
 
   handleCode = (code) => {
+    code = code.toLowerCase();
     this.setState({
       code: code,
       searched: false,
@@ -57,7 +57,7 @@ class App extends Component {
         });
         this.setState({
           searched: true,
-          showThankYou: false
+          showThankYou: false,
         });
       });
   }
@@ -98,18 +98,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Tile>
-          <SearchGuest
-            code={this.state.code}
-            showNotFoundMessage={this.state.searched && !this.state.found}
-            handleCode={e => this.handleCode(e.target.value)}
-            handleGuestSearch={e => this.handleGuestSearch(e)}
-          />
-        </Tile>
-        <div className="app__message">
-          {/* {this.state.showThankYou ?
-          : ""} */}
-        </div>
+        <h1 className="app__title">Natalie &amp; Maximo's Wedding</h1>
+        <SearchGuest
+          code={this.state.code}
+          showNotFoundMessage={this.state.searched && !this.state.found}
+          handleCode={e => this.handleCode(e.target.value)}
+          handleGuestSearch={e => this.handleGuestSearch(e)}
+        />
         {this.state.found ?
           <Guest
             guest={this.state.guest}
@@ -118,6 +113,16 @@ class App extends Component {
           />
         : ''
         }
+        <div className="bx--grid">
+          <div className="bx--row">
+            <div className="bx--col-xs-12 ">
+              <div className="app__message">
+                {this.state.showThankYou ? "Thank you for confirming your attendance!"
+                : ""}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

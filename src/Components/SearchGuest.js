@@ -10,6 +10,13 @@ const SearchGuest = props => (
     <Form className="search-guest__form" onSubmit={e => props.handleGuestSearch(e)}>
       <div className="bx--grid">
         <div className="bx--row">
+          <div className="bx--col-xs-12 ">
+            <p>
+              To RSVP, please enter your last name followed by your zip code, with no space in between (e.g. mena85295).
+            </p>
+          </div>
+        </div>
+        <div className="bx--row">
           <div className="bx--col-xs-9 ">
             <Search
               id="search-guest-code"
@@ -19,9 +26,6 @@ const SearchGuest = props => (
               placeHolderText="e.g. mena85295"
               className="search-guest__code"
             />
-            <div>
-              Please enter your last name followed by your zip code, with no space in between.
-            </div>
           </div>
           <div className="bx--col-xs-3">
             <Button type="submit" className="search-guest__submit">

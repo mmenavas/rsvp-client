@@ -1,0 +1,23 @@
+.guest__name {
+  color: #D18823;
+  font-weight: 400;
+}
+
+.guest__additional-guests {
+  background-color: rgb(209,136,35, .7);
+  padding: 6px;
+  border-radius: 50%;
+  color: #fff;
+  /* font-size: 1.25rem; */
+}
+
+.edit-guest__rsvp label .bx--label {
+  font-size: 1rem;
+}
+
+.edit-guest__submit,
+.edit-guest__submit:hover,
+.edit-guest__submit:focus {
+  margin-top:10px;
+  background-color: #5EB1BF;
+}
