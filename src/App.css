@@ -6,9 +6,5 @@
   text-align: center;
   font-weight: 400;
   color: #D18823;
-}
-.search-guest__submit,
-.search-guest__submit:hover,
-.search-guest__submit:focus {
-  background-color: #5EB1BF;
+  font-size:1.5rem;
 }

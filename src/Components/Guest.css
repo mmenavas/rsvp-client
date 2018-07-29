@@ -1,6 +1,16 @@
+.guest {
+  box-sizing: border-box;
+  background-color:rgb(255,255,255,.75);
+  border-radius: 10px;
+  padding:16px;
+  max-width: 280px;
+  box-sizing: border-box;
+}
+
 .guest__name {
   color: #D18823;
   font-weight: 400;
+  padding: 10px 0;
 }
 
 .guest__additional-guests {
@@ -11,8 +21,12 @@
   /* font-size: 1.25rem; */
 }
 
+.guest__rsvp {
+  margin-top: 20px;
+}
 .edit-guest__rsvp label .bx--label {
   font-size: 1rem;
+  color:#000;
 }
 
 .edit-guest__submit,

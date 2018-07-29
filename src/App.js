@@ -117,7 +117,8 @@ class App extends Component {
           <div className="bx--row">
             <div className="bx--col-xs-12 ">
               <div className="app__message">
-                {this.state.showThankYou ? "Thank you for confirming your attendance!"
+                {this.state.showThankYou ? 
+                "Thank you for confirming your attendance!"
                 : ""}
               </div>
             </div>
