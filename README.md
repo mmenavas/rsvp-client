@@ -3,6 +3,8 @@
 This app allows guests to RSVP to an event.
 
 ### TODO:
-- Provide zipcode field.
-- Find guest by combining last name, and zipcode.
-- Create a guest field in database that combines last name and zip code (e.g. smith_12345)
+- ~~Hide additional guests bubble when there's none.~~
+- ~~Make phone keyboard vanish after pressing search button.~~
+- ~~Remove spaces from search field.~~
+- ~~Add cool font for page title.~~
+- Restyle Guest block and app status messages.

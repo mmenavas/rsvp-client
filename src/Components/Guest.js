@@ -12,7 +12,10 @@ const Guest = props => (
       <div className="bx--col-xs-12 ">
         <div className="guest">
           <h2 className="guest__name">
-            {props.guest.firstName + " " + props.guest.lastName} <span className="guest__additional-guests"> +{props.guest.guests} </span>
+            {props.guest.firstName + " " + props.guest.lastName  + ' '}
+            {props.guest.guests > 0 ?
+              <span className="guest__additional-guests"> +{props.guest.guests}</span>
+              : ''}
           </h2>
           <Form className="edit-guest" onSubmit={e => props.handleUpdateGuest(e)}>
             <Select

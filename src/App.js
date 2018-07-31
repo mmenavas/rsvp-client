@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   handleCode = (code) => {
-    code = code.toLowerCase();
+    code = code.toLowerCase().replace(/ /g, '');
     this.setState({
       code: code,
       searched: false,
@@ -32,6 +32,7 @@ class App extends Component {
   }
   
   handleGuestSearch = (e) => {
+    this.searchGuestRef.searchRef.input.blur();
     e.preventDefault();
 
     // Abort if no name is supplied
@@ -76,8 +77,6 @@ class App extends Component {
       return false;
     }
 
-    console.log(this.state.guest);
-
     // Update guest on firebase.
     firebase.database().ref(`/guests/${this.state.guest.id}`).set({
       ...this.state.guest,
@@ -104,6 +103,9 @@ class App extends Component {
           showNotFoundMessage={this.state.searched && !this.state.found}
           handleCode={e => this.handleCode(e.target.value)}
           handleGuestSearch={e => this.handleGuestSearch(e)}
+          ref={ref => {
+            this.searchGuestRef = ref;
+          }}
         />
         {this.state.found ?
           <Guest
