@@ -115,16 +115,10 @@ class App extends Component {
           />
         : ''
         }
-        <div className="bx--grid">
-          <div className="bx--row">
-            <div className="bx--col-xs-12 ">
-              <div className="app__message">
-                {this.state.showThankYou ? 
-                "Thank you for confirming your attendance!"
-                : ""}
-              </div>
-            </div>
-          </div>
+        <div className="app__message">
+          {this.state.showThankYou ? 
+          <p>Thank you for confirming your attendance!</p>
+          : null}
         </div>
       </div>
     );

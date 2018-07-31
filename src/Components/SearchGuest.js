@@ -9,43 +9,27 @@ class SearchGuest extends Component {
   render = () =>
     <div className="search-guest">
       <Form className="search-guest__form" onSubmit={e => this.props.handleGuestSearch(e)}>
-        <div className="bx--grid">
-          <div className="bx--row">
-            <div className="bx--col-xs-12 ">
-              <p>
-                To RSVP, please enter your last name followed by your zip code, with no space in between (e.g. mena85295).
-              </p>
-            </div>
-          </div>
-          <div className="bx--row">
-            <div className="bx--col-xs-9 ">
-              <Search
-                id="search-guest-code"
-                labelText="Search"
-                onChange={this.props.handleCode}
-                value={this.props.code}
-                placeHolderText="e.g. mena85295"
-                className="search-guest__code"
-                ref={ref => {
-                  this.searchRef = ref;
-                }}
-              />
-            </div>
-            <div className="bx--col-xs-3">
-              <Button type="submit" className="search-guest__submit">
-                Search
-              </Button>
-            </div>
-          </div>
-          <div className="bx--row">
-            <div className="bx--col-xs-12">
-              <div className="search-guest__message">
-                {this.props.showNotFoundMessage ?
-                  <p>Guest was not found.</p>  
-                : ''}
-              </div>
-            </div>
-          </div>
+        <div className="search-guest__instructions">
+          <p>To RSVP, please enter your last name followed by your zip code:</p>
+        </div>
+        <Search
+          id="search-guest-code"
+          labelText="Search"
+          onChange={this.props.handleCode}
+          value={this.props.code}
+          placeHolderText="e.g. mena85295"
+          className="search-guest__code"
+          ref={ref => {
+            this.searchRef = ref;
+          }}
+        />
+        <Button type="submit" className="search-guest__submit">
+          Search
+        </Button>
+        <div className="search-guest__message">
+          {this.props.showNotFoundMessage ?
+            <p><strong>Guest not found:</strong> Please verify that your last name and zipcode are correct.</p>  
+          : ''}
         </div>
       </Form>
     </div>

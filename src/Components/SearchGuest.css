@@ -1,6 +1,15 @@
 .search-guest__code {
   margin-top:10px;
 }
+.search-guest__instructions {
+  margin-top: 20px;
+}
+.search-guest__message {
+  margin-top: 10px;
+}
+.search-guest__message strong {
+  color: #ffae28;
+}
 .search-guest__submit,
 .search-guest__submit:hover,
 .search-guest__submit:focus {
